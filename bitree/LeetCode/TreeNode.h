@@ -75,4 +75,13 @@ TreeNode* creatTree(vector<int> &level_traversal){
     return root;
 }
 
+void printVector(vector<int> & vec){
+	for (auto x : vec)
+	{
+		print(x);
+	}
+	NEXTLINE;
+}
+
+
 #endif //OBJECT_TREENODE_H

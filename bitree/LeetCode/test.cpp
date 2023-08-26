@@ -13,7 +13,7 @@ void preOrder(TreeNode* root){
 }
 
 int test(){
-    vector<int> level_tree{1,2,3,-1,4,-1,5};
+    vector<int> level_tree{7,6,-1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     TreeNode* root = creatTree(level_tree);
     preOrder(root);
 
