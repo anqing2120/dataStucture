@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <iostream>
 using namespace  std;
-
 #define NONE -1 // 用这个代指空节点
 #define print(x) cout<<(x)<<" "
 #define NEXTLINE cout<<endl
