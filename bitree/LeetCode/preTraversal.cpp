@@ -26,8 +26,9 @@ vector<int> preTraversal(TreeNode* root)
 			break;
 		}
 
-		stack<TreeNode*> path_ptr;
+		stack<TreeNode* > path_ptr;
 		TreeNode* ptr(root);
+
 		do
 		{
 			// 从根开始 一路向左
@@ -89,7 +90,7 @@ vector<int> preTraversal2(TreeNode* root)
 
 // 先序遍历 3 ：Morris方法，不使用栈，空间复杂度O(1)
 
-int getRightConner(TreeNode* current,TreeNode* &right_corner)
+int getRightConner(const TreeNode* current,TreeNode* &right_corner)
 {// 左孩子存在时，找到最右下角的指针
 	int ret = -1; // 未知错误
 	right_corner = current->left;
@@ -113,8 +114,7 @@ vector<int> preTraversal3(TreeNode* root)
 {
 	vector<int> result;
 	TreeNode* cur = root; // 当前节点指针
-	TreeNode* prev = nullptr; // 前驱节点指针
-	TreeNode* right_corner=nullptr; //左子树的右下角
+	TreeNode* right_corner(nullptr); //左子树的右下角
 	enum {
 		firstRight, // 首次增加新的连接
 		overLeft // 左子树遍历完成
@@ -125,7 +125,6 @@ vector<int> preTraversal3(TreeNode* root)
 		if (cur->left == nullptr) // 不存在左儿子，当前用完就可以丢掉了
 		{
 			result.push_back(cur->val);
-			prev = cur;
 			cur = cur->right;
 		}
 		else
@@ -142,7 +141,6 @@ vector<int> preTraversal3(TreeNode* root)
 				right_corner->right = cur; // 留个后门
 
 				result.push_back(cur->val);
-				prev = cur;
 				cur = cur->left;
 			}else{
 				printf("something error.\n");
@@ -161,10 +159,5 @@ int main()
 
 	preOrder(root);
 	NEXTLINE;
-
-	for (auto x : level)
-	{
-		print(x);
-	}
-	NEXTLINE;
+	printVector(level);
 }
