@@ -123,7 +123,7 @@ vector<int> postOrderTraversal1(TreeNode* root)
 //				print("y");
 //				print(right_corner->val);
 //				NEXTLINE;
-				while(stack.empty()!=true){
+				while(!stack.empty()){
 					TreeNode* node = stack.top();
 					if (node == cur) break;
 					stack.pop();
@@ -148,16 +148,13 @@ vector<int> postOrderTraversal1(TreeNode* root)
 		}
 	}
 
-	while(stack.empty()!=true){
+	while(!stack.empty()){
 		TreeNode* node = stack.top();stack.pop();
 		result.push_back(node->val);
 	}
 
 	return result;
 }
-
-
-
 
 
 int main()
