@@ -26,12 +26,26 @@ void levelOrder(TreeNode* root){
 
 }
 
-vector<int> levelOrderTraversal(TreeNode* root){
-	vector<int> result;
+// 递归方法
+void traverse(TreeNode* root, int level, vector<vector<int> >& vec){
+	if (root == nullptr){
+		return;
+	}
+	// 确认当前层的 袋子 存在
+	if (vec.size() < level){
+		vec.push_back(vector<int>());
+	}
 
+	// 添加当前节点 level-1 对应第level层的袋子
+	vec[level-1].push_back(root->val);
+	traverse(root->left, level+1, vec);
+	traverse(root->right, level+1, vec);
+}
 
-
-	return result;
+vector<vector<int> > levelOrderTraversal(TreeNode* root){
+	vector<vector<int> > vec_level;
+	traverse(root,1,vec_level);
+	return vec_level;
 }
 
 int main()
@@ -41,6 +55,8 @@ int main()
 	levelOrder(root);
 	NEXTLINE;
 
-	vector<int> level = levelOrderTraversal(root);
-	printVector(level);
+	vector<vector<int> > levels = levelOrderTraversal(root);
+	for(auto &vec:levels){
+		printVector(vec);
+	}
 }
