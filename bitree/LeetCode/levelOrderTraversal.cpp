@@ -52,7 +52,6 @@ vector<vector<int> > levelOrderTraversal(TreeNode* root){
 }
 
 // zigzag
-
 vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
     vector<vector<int>> result;
     
