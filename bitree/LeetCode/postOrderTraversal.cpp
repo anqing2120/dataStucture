@@ -1,9 +1,7 @@
 //
 // Created by lianqing on 2023/8/26.
 //
-#include <stack>
-#include "TreeNode.h"
-
+#include "base/TreeNode.hpp"
 
 void postOrder(TreeNode* root){
 	if(root){

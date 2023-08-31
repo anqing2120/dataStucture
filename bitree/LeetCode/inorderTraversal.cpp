@@ -2,8 +2,7 @@
 // Created by lianqing on 2023/8/25.
 //
 
-#include <stack>
-#include "TreeNode.h"
+#include "base/TreeNode.hpp"
 
 void inOrder(TreeNode* root)
 {
@@ -14,48 +13,28 @@ void inOrder(TreeNode* root)
 		inOrder(root->right);
 	}
 }
-// 好比是打草稿越是详细越好
 vector<int> inorderTraversal(TreeNode* root)
 {
-	vector<int> ans;
-	do
-	{
-		if (nullptr == root)
-		{
-			break;
-		}
+    vector<int> ans;
+    if (root == nullptr) {
+        return ans;
+    }
 
-		stack<TreeNode*> stk;
-		TreeNode* ptr = root; // ptr points to the root
+    stack<TreeNode*> stk;
+    TreeNode* ptr = root;
 
-		do
-		{
-		label:
-			while (ptr)
-			{
-				stk.push(ptr);
-				ptr = ptr->left;
-			} // 来到最左下的空节点 ptr == null
-			// print(left:null)
-		label2:
-			if (stk.empty())
-			{
-				break;
-			} // 用之前先检查
-			TreeNode* father = stk.top();
-			stk.pop();
-			ans.push_back(father->val); // print(root)
-			ptr = father->right;
+    while (ptr != nullptr || !stk.empty()) {
+        while (ptr != nullptr) {
+            stk.push(ptr);
+            ptr = ptr->left;
+        }
+        TreeNode* father = stk.top();
+        stk.pop();
+        ans.push_back(father->val);
+        ptr = father->right;
+    }
 
-//			if(ptr){
-//				goto label; // 右边儿子不空，继续往它的左下走
-//			}else{
-//				goto label2; // 右边儿子也是空，继续弹出父节点
-//			}
-		} while (true);
-	} while (false);
-
-	return ans;
+    return ans;
 }
 
 // 简化后栈的写法 注意到栈里面上下节点的关系是 下面是父亲节点 上面是左孩子

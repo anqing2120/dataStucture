@@ -2,7 +2,7 @@
 // Created by lianqing on 2023/8/18.
 //
 
-#include "TreeNode.h"
+#include "TreeNode.hpp"
 
 void preOrder(TreeNode* root){
     if(nullptr!=root){
@@ -12,7 +12,7 @@ void preOrder(TreeNode* root){
     }
 }
 
-int test(){
+void test(){
     vector<int> level_tree{7,6,-1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     TreeNode* root = creatTree(level_tree);
     preOrder(root);
