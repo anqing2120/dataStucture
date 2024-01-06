@@ -111,8 +111,6 @@ vector<int> preTraversal3(TreeNode* root) {
 	}
 	return result;
 }
-
-
 // curr 指向当前节点，尚未入栈
 // old_path 记录之前的,即已经被打印的节点
 // 功能是从当前起点走到左下角
